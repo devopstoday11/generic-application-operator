@@ -7,8 +7,8 @@ metadata:
     kubeaddons.mesosphere.io/name: generic-application-operator
   annotations:
     catalog.kubeaddons.mesosphere.io/addon-revision: "0.1.0"
-    appversion.kubeaddons.mesosphere.io/cassandra: "0.1.0"
-    stage.kubeaddons.mesosphere.io/cassandra: Alpha
+    appversion.kubeaddons.mesosphere.io/generic-app-operator: "0.1.0"
+    stage.kubeaddons.mesosphere.io/generic-app-operator: Alpha
     catalog.kubeaddons.mesosphere.io/kudo-params: "https://raw.githubusercontent.com/kudobuilder/generic-application-operator/master/operator/params.yaml"
 spec:
   kubernetes:
