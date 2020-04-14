@@ -36,10 +36,12 @@ parameters:
     description: "Additional labels for identifying deployment resources. Not used for selector matches."
     displayName: "Additional Labels"
     type: map
+    required: False
   - name: NODE_SELECTORS
     description: "Map of node selectors for pinning a workload to a specific set of nodes."
     displayName: "Node Selectors"
     type: map
+    required: False
   - name: INGRESS_ENABLED
     description: "If enabled, creates an ingress resource"
     default: False
@@ -47,6 +49,7 @@ parameters:
     description: "Additional annotations for configuring the ingress controller"
     displayName: "Ingress Annotations"
     type: map
+    required: False
   - name: HOSTNAMES
     description: "A list of hostnames for the ingress to bind to"
     displayName: "Hostnames"

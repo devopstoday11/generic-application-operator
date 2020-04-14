@@ -1,8 +1,6 @@
 APPLICATION_NAME: nginx
 PORT: 80
-ENV: |
-  foo: "bar"
-  bam: "baz"
+ENV: '{"foo": "bar", "bam": "baz"}'
 IMAGE: nginx
 INGRESS_ENABLED: True
 HOSTNAMES: "[\"gerred.org\"]"
