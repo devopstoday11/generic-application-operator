@@ -1,0 +1,29 @@
+apiVersion: kudo.dev/v1beta1
+name: "generic-application"
+operatorVersion: "0.1.0"
+kudoVersion: 0.11.1
+kubernetesVersion: 1.16.0
+appVersion: 0.1.0
+maintainers:
+  - name: D2iQ
+    email: operators@d2iq.com
+url: https://d2iq.com
+tasks:
+  # configuration and application tasks
+  - name: deploy
+    kind: Apply
+    spec:
+      resources:
+        - deployment.yaml
+        - service.yaml
+        - ingress.yaml
+plans:
+  deploy:
+    strategy: serial
+    phases:
+      - name: deploy-application
+        strategy: serial
+        steps:
+          - name: deploy
+            tasks:
+              - deploy

@@ -1,0 +1,55 @@
+apiVersion: kudo.dev/v1beta1
+parameters:
+  - name: APPLICATION_NAME
+    description: "Application Name"
+    displayName: "Application Name"
+  - name: REPLICAS
+    description: "Number of replicas for the deployment"
+    displayName: "Replicas"
+    default: "1"
+  - name: IMAGE
+    description: "OCI-compliant Container Image to run"
+    displayName: "Container Image"
+  - name: CMD
+    description: "Command to execute within the container"
+    displayName: "Starting Command"
+    required: False
+  - name: ARGUMENTS
+    description: "Arguments to specify to the container"
+    displayName: "Container arguments"
+    required: False
+  - name: PORT
+    description: "Port the application listens on. This will be used as the Target Port, and by default, the Port for the Service."
+    displayName: "Listener Port"
+  - name: SERVICE_PORT
+    description: "Optional override for the Service Port"
+    required: False
+    displayName: "Service Port"
+  - name: SERVICE_TYPE
+    description: "Service type. Defaults to ClusterIP"
+    default: ClusterIP
+  - name: ENV
+    description: "Environment variables for the application container"
+    displayName: "Environment Variables"
+    type: map
+  - name: USER_LABELS
+    description: "Additional labels for identifying deployment resources. Not used for selector matches."
+    displayName: "Additional Labels"
+    type: map
+  - name: NODE_SELECTORS
+    description: "Map of node selectors for pinning a workload to a specific set of nodes."
+    displayName: "Node Selectors"
+    type: map
+  - name: INGRESS_ENABLED
+    description: "If enabled, creates an ingress resource"
+    default: False
+  - name: INGRESS_ANNOTATIONS
+    description: "Additional annotations for configuring the ingress controller"
+    displayName: "Ingress Annotations"
+    type: map
+  - name: HOSTNAMES
+    description: "A list of hostnames for the ingress to bind to"
+    displayName: "Hostnames"
+    type: array
+    required: False
+

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Name }}-{{ .Params.APPLICATION_NAME }}"
+  namespace: "{{ .Namespace }}"
+  labels:
+    app: "{{ .Name }}-{{ .Params.APPLICATION_NAME }}"
+{{ if .Params.USER_LABELS }}
+{{ range $name, $value := .Params.USER_LABELS }}
+    {{ $name }}: {{ $value }}
+{{ end }}
+{{ end }}
+spec:
+  replicas: {{ .Params.REPLICAS }}
+  selector:
+    matchLabels:
+      app: "{{ .Name }}-{{ .Params.APPLICATION_NAME }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Name }}-{{ .Params.APPLICATION_NAME }}"
+    spec:
+{{ if .Params.NODE_SELECTORS }}
+      nodeSelector:
+{{ range $name, $value := .Params.NODE_SELECTORS }}
+        {{ $name }}: {{ $value }}
+{{ end }}
+{{ end }}
+      containers:
+      - name: app
+        image: {{ .Params.IMAGE }}
+        ports:
+        - containerPort: {{ .Params.PORT }}
+{{if .Params.ENV }}
+        env:
+        {{ range $name, $value := .Params.ENV }}
+        - name: {{ $name }}
+          value: {{ $value }}
+        {{ end }}
+{{ end }}
