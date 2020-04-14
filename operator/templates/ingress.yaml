@@ -1,4 +1,4 @@
-{{ if (eq .Params.INGRESS_ENABLED "true") }}
+{{ if (eq (lower .Params.INGRESS_ENABLED) "true") }}
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:

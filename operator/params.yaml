@@ -32,6 +32,7 @@ parameters:
     description: "Environment variables for the application container"
     displayName: "Environment Variables"
     type: map
+    required: False
   - name: USER_LABELS
     description: "Additional labels for identifying deployment resources. Not used for selector matches."
     displayName: "Additional Labels"
