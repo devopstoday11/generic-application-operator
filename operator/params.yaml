@@ -14,9 +14,9 @@ parameters:
     description: "Command to execute within the container"
     displayName: "Starting Command"
     required: False
-  - name: ARGUMENTS
+  - name: ARGS
     description: "Arguments to specify to the container"
-    displayName: "Container arguments"
+    displayName: "Container arguments. Specify as an array. (e.g.: [\"--flag1\", \"--flag2\"]"
     required: False
   - name: PORT
     description: "Port the application listens on. This will be used as the Target Port, and by default, the Port for the Service."

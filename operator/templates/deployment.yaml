@@ -29,9 +29,15 @@ spec:
       containers:
       - name: app
         image: {{ .Params.IMAGE }}
+{{ if .Params.CMD }}
+        command: ['{{ .Params.CMD }}']
+{{ end }}
+{{ if .Params.ARGS }}
+        args: {{ .Params.ARGS }}
+{{ end }}
         ports:
         - containerPort: {{ .Params.PORT }}
-{{if .Params.ENV }}
+{{ if .Params.ENV }}
         env:
         {{ range $name, $value := .Params.ENV }}
         - name: {{ $name }}
